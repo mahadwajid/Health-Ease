@@ -8,6 +8,7 @@ const cardData = [
 //   { name: 'Card 4', image: require('./path/to/image4.png') },
 {name: 'BMI'},
 {name: 'BMI'},
+{name: 'BMI'},
 ];
 
 const Healthtracker = () => {
