@@ -1,31 +1,35 @@
+ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../Pages/Home';
-import Booking from '../Pages/Booking';
-import Bottomtab from './Bottomtab';
-import Eprescription from '../Pages/Eprescription';
+import Sidetab from './Sidetab';
 import Medicalrecord from '../Pages/Medicalrecord';
-import Healthtracker from '../Pages/Healthtracker';
-import Support from '../Pages/Support';
-import Subscription from '../Pages/Subscription';
+import { TouchableOpacity, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
 const Appnavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Bottomtab">
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Bottomtab" component={Bottomtab}
-      options={{ headerShown: false }} 
-       
+    <Stack.Navigator initialRouteName="Sidetab" headerMode="none">
+      <Stack.Screen name="Sidetab" component={Sidetab} />
+      <Stack.Screen
+        name="Medicalrecord"
+        component={Medicalrecord}
+        options={({ navigation }) => ({
+          title: 'Medical Record',
+          headerShown: true,
+          headerBackTitleVisible: false,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+        })}
       />
-      <Stack.Screen name="Booking" component={Booking} />
-      <Stack.Screen name="Eprescription" component={Eprescription} />
-      <Stack.Screen name="Medicalrecord" component={Medicalrecord} />
-      <Stack.Screen name="Healthtracker" component={Healthtracker} />
-      <Stack.Screen name="Support" component={Support} />
-      <Stack.Screen name="Subscription" component={Subscription} />
     </Stack.Navigator>
   );
 };
 
 export default Appnavigator;
+
+
+

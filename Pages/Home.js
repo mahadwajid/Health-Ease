@@ -22,10 +22,15 @@ const Home = ({ navigation }) => {
     navigation.navigate('Subscription');
   };
 
+  const openSidetab = () => {
+    navigation.navigate('SidetabScreen');
+  };
+
   const Localimage=require("../Images/Health1.png");
   const Localimage1=require("../Images/Pree.png");
 
   return (
+    
     <View>
      {/* /////UperCard////////////////   */}
      <View style={styles.card}>
@@ -132,6 +137,8 @@ const Home = ({ navigation }) => {
         </View>
       </ImageBackground>
     </TouchableOpacity>
+
+    
 
 
 
