@@ -15,7 +15,7 @@ const Bottomtab = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'HomeStack') {
+          if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Article') {
             iconName = focused ? 'newspaper' : 'newspaper-outline';
@@ -29,7 +29,7 @@ const Bottomtab = () => {
       
       })}
     >
-      <Tab.Screen name="HomeStack" component={HomeStack}  options={{ headerShown: false }}  />
+      <Tab.Screen name="Home" component={HomeStack}  options={{ headerShown: false }}  />
       <Tab.Screen name="Article" component={Article} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
