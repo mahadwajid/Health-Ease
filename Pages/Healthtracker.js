@@ -1,24 +1,28 @@
 import React from 'react';
-import { View, ScrollView, Text, Image, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const cardData = [
-//   { name: 'Card 1', image: require('./path/to/image1.png') },
-//   { name: 'Card 2', image: require('./path/to/image2.png') },
-//   { name: 'Card 3', image: require('./path/to/image3.png') },
-//   { name: 'Card 4', image: require('./path/to/image4.png') },
-{name: 'BMI'},
-{name: 'BMI'},
-{name: 'BMI'},
+  { name: 'BMI' },
+  { name: 'BMI' },
+  { name: 'BMI' },
 ];
 
 const Healthtracker = () => {
+  const navigation = useNavigation();
+
+  const navigateToBMI = () => {
+    navigation.navigate('BMI');
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {cardData.map((card, index) => (
-        <View key={index} style={styles.card}>
-          <Image source={card.image} style={styles.cardImage} />
+        <TouchableOpacity key={index} style={styles.card} onPress={navigateToBMI}>
+          {/* Assuming you want the same image for all cards */}
+          <Image source={card.image}  style={styles.cardImage} />
           <Text style={styles.cardText}>{card.name}</Text>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );

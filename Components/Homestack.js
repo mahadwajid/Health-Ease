@@ -7,6 +7,7 @@ import Eprescription from '../Pages/Eprescription';
 import Healthtracker from '../Pages/Healthtracker';
 import Support from '../Pages/Support';
 import Subscription from '../Pages/Subscription';
+import BMI from '../Pages/HealthTracker/BMI';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,8 @@ const HomeStack = () => {
       <Stack.Screen name="Healthtracker" component={Healthtracker} />
       <Stack.Screen name="Support" component={Support} />
       <Stack.Screen name="Subscription" component={Subscription} />
+      <Stack.Screen name="BMI" component={BMI} />
+
     </Stack.Navigator>
  );
 }
