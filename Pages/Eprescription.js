@@ -1,35 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { collection, getDocs , where, query  } from 'firebase/firestore';
+import db from '../firebaseconfig'; 
+import { AuthContext } from '../AuthContext'; 
 
 const Eprescription = () => {
   const [prescriptionData, setPrescriptionData] = useState(null);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    // Simulating an API call to fetch prescription data
     const fetchPrescriptionData = async () => {
       try {
-        // Replace this with your actual API endpoint or database fetch logic
-        const response = await fetch('YOUR_API_ENDPOINT');
-        const data = await response.json();
-        setPrescriptionData(data); // Set fetched data to state
+        if (user) {
+          const prescriptionRef = collection(db, 'Eprescription');
+          const q = query(prescriptionRef, where('patientName', '==', user.firstName)); 
+          const snapshot = await getDocs(q);
+          const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          setPrescriptionData(data);
+        }
       } catch (error) {
         console.error('Error fetching prescription data:', error);
       }
     };
 
     fetchPrescriptionData();
-  }, []); // Run this effect only once on component mount
+  }, [user]);
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>E-Prescription</Text>
       {prescriptionData ? (
-        <>
-          <Text style={styles.text}>Doctor: {prescriptionData.doctorName}</Text>
-          <Text style={styles.text}>Medication: {prescriptionData.medication}</Text>
-          <Text style={styles.text}>Instructions: {prescriptionData.instructions}</Text>
-          {/* Display other prescription details as needed */}
-        </>
+        prescriptionData.map(prescription => (
+          <View key={prescription.id}>
+            <Text style={styles.text}>Patient Name: {prescription.patientName}</Text>
+            <Text style={styles.text}>Sex: {prescription.patientSex}</Text>
+            <Text style={styles.text}>Address: {prescription.patientAddress}</Text>
+            <Text style={styles.text}>Prescription: {prescription.prescription}</Text>
+            <Text style={styles.text}>Date/Time: {prescription.dateTime}</Text>
+            {/* Other fields */}
+          </View>
+        ))
       ) : (
         <Text>Loading prescription...</Text>
       )}

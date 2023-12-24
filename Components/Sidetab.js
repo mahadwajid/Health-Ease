@@ -17,7 +17,6 @@ const CustomDrawerContent = ({ navigation }) => {
     logout(); 
   };
   
-
   return (
     <DrawerContentScrollView>
       <View style={styles.sidebar}>

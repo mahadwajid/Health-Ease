@@ -29,7 +29,7 @@ const HomeStack = () => {
       <Stack.Screen name="Support" component={Support} />
       <Stack.Screen name="Subscription" component={Subscription} />
       <Stack.Screen name="BMI" component={BMI} />
-      <Stack.Screen name="AdminHome" component={AdminHome} />
+      {/* <Stack.Screen name="AdminHome" component={AdminHome} /> */}
     </Stack.Navigator>
   );
 };
