@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
-const BMI = () => {
+const Step1 = () => {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [bmiResult, setBmiResult] = useState(null);
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BMI;
+export default Step1;
