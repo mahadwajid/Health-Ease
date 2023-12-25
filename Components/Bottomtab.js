@@ -23,13 +23,16 @@ const Bottomtab = () => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'blue',
+        tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'gray', 
-        tabBarStyle: { display: 'flex' }, 
+        tabBarStyle: {
+          backgroundColor: '#cccbc8', 
+          display: 'flex', 
+        },
       
       })}
     >
-      <Tab.Screen name="Home" component={HomeStack}  options={{ headerShown: false }}  />
+      <Tab.Screen name="Home" component={HomeStack}  options={{ headerShown: false }}   />
       <Tab.Screen name="Article" component={Article} options={{ headerShown: false }} />
     </Tab.Navigator>
   );

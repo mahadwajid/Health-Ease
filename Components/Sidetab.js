@@ -55,7 +55,20 @@ const CustomDrawerContent = ({ navigation }) => {
 const Sidetab = () => {
   return (
     <Drawer.Navigator drawerContent={({ navigation }) => <CustomDrawerContent navigation={navigation} />} >
-      <Drawer.Screen name="Home" component={Bottomtab} />
+      <Drawer.Screen name="Home" component={Bottomtab} 
+       options={{
+        headerStyle: {
+          backgroundColor: '#cccbc8', 
+        },
+        headerTintColor: 'black',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerShown: true,
+      }}
+      
+      
+      />
       <Drawer.Screen name="Login" component={Login} />
       <Drawer.Screen name="Signup" component={Signup} />
       {/* Other screens */}

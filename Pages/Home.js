@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, ImageBackground,TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { View, Text, ImageBackground,TouchableOpacity, StyleSheet, Button, Dimensions } from 'react-native';
 const Home = ({ navigation }) => {
+
+  const screenHeight = Dimensions.get('window').height;
 
   const handlePress = () => {
     navigation.navigate('Eprescription');
@@ -31,11 +33,11 @@ const Home = ({ navigation }) => {
 
   return (
     
-    <View>
+    <View style={[styles.con, { height: screenHeight }]} >
      {/* /////UperCard////////////////   */}
      <View style={styles.card}>
       <ImageBackground
-        source={Localimage}
+        // source={Localimage}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -53,10 +55,10 @@ const Home = ({ navigation }) => {
     <View style={styles.container}> 
     <TouchableOpacity style={styles.card1} onPress={handlePress}>
       <ImageBackground
-        source={{
-          uri:
-            'https://t3.ftcdn.net/jpg/02/14/06/58/240_F_214065892_X0Wy5KxKVI7XmYdmr5QaGuYuXt7MLr4j.jpg',
-        }}
+        // source={{
+        //   uri:
+        //     'https://t3.ftcdn.net/jpg/02/14/06/58/240_F_214065892_X0Wy5KxKVI7XmYdmr5QaGuYuXt7MLr4j.jpg',
+        // }}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -68,10 +70,10 @@ const Home = ({ navigation }) => {
 
     <TouchableOpacity style={styles.card1} onPress={handlePress1}>
       <ImageBackground
-        source={{
-          uri:
-            'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        }}
+        // source={{
+        //   uri:
+        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
+        // }}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -89,10 +91,10 @@ const Home = ({ navigation }) => {
 
     <TouchableOpacity style={styles.card3} onPress={handlePress3}>
       <ImageBackground
-        source={{
-          uri:
-            'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        }}
+        // source={{
+        //   uri:
+        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
+        // }}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -105,10 +107,10 @@ const Home = ({ navigation }) => {
 
     <TouchableOpacity style={styles.card3} onPress={handlePress2}>
       <ImageBackground
-        source={{
-          uri:
-            'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        }}
+        // source={{
+        //   uri:
+        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
+        // }}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -125,10 +127,10 @@ const Home = ({ navigation }) => {
 
 <TouchableOpacity style={styles.card} onPress={handlePress4}>
       <ImageBackground
-        source={{
-          uri:
-            'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        }}
+        // source={{
+        //   uri:
+        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
+        // }}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
@@ -148,6 +150,12 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
 
+  con:{
+    backgroundColor: '#f5f4f1',
+
+  },
+
+
 contentContainer: {
   padding: 20,
   alignItems: 'flex-start',
@@ -157,11 +165,12 @@ contentContainer: {
         flexDirection: 'row', // Align cards in a row
         justifyContent: 'space-between', // Space between the cards
         marginBottom: '-2%',
+        
       },
 
  card3: {
     width:'45%',
-    backgroundColor: 'white',
+    backgroundColor:'#E9E4ED',
     padding: 0,
     margin: 10,
     borderRadius: 8,
@@ -176,7 +185,7 @@ contentContainer: {
   },
  card1: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor:'#E9E4ED',
     padding: 0,
     margin: 10,
     borderRadius: 8,
@@ -190,7 +199,7 @@ contentContainer: {
     elevation: 5,
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#E9E4ED',
     padding: 0,
     margin: 10,
     borderRadius: 8,

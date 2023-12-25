@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableWithoutFeedback, Keyboard, Modal, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
+import { Provider as PaperProvider, Button, TextInput, Text } from 'react-native-paper';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import db from '../firebaseconfig'; // Import the Firestore instance
 import { AuthContext } from '../AuthContext';
@@ -10,6 +11,7 @@ const Login = ({ navigation })  => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const auth = useContext(AuthContext);
+  const Localimage=require("../Images/Imag1.png");
 
   const handleLogin = async () => {
     try {
@@ -46,6 +48,10 @@ const Login = ({ navigation })  => {
   };
 
   return (
+    <ImageBackground
+    source={Localimage}
+      style={styles.backgroundImage}
+    >
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <View style={styles.form}>
@@ -68,6 +74,7 @@ const Login = ({ navigation })  => {
         {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       </View>
     </View>
+    </ImageBackground>
   );
 };
 
@@ -107,6 +114,10 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     marginTop: 10,
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
   },
 });
 
