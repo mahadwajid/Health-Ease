@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, ImageBackground, ScrollView, } from 'react-native';
+import { Provider as PaperProvider, Button, TextInput, Text } from 'react-native-paper';
 import { collection , addDoc } from 'firebase/firestore';
 import  db  from '../firebaseconfig.js'; 
 
@@ -9,6 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpass, setcpass] = useState('');
+  const Localimage=require("../Images/Imag1.png");
 
   const handleSignup = async () => {
     try {
@@ -29,78 +31,121 @@ const Signup = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Signup</Text>
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="First Name"
-          onChangeText={(text) => setFirstName(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Last Name"
-          onChangeText={(text) => setLastName(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-cpass"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-         
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="ConfirmPassword"
-          onChangeText={(text) => setcpass(text)}
-      
-        />
-        <TouchableOpacity style={styles.button} onPress={handleSignup}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ImageBackground
+      source={Localimage}
+      style={styles.backgroundImage}
+    >
+      <PaperProvider>
+        <ScrollView contentContainerStyle={styles.container}>
+          <View style={styles.centeredView}>
+            <View style={styles.inputContainer}>
+              <Text style={styles.loginText}>Signup</Text>
+              <TextInput
+                label={'FirstName'}
+                mode={'outlined'}
+                value={Text}
+                onChangeText={(text) => setFirstName(text)}
+                style={styles.input}
+              />
+              <TextInput
+                label={'LastName'}
+                mode={'outlined'}
+                style={[styles.input, { marginBottom: 30 }]}
+                value={Text}
+                onChangeText={(text) => setLastName(text)}
+              />
+             
+             <TextInput
+                label={'Enter you Email'}
+                mode={'outlined'}
+                style={[styles.input, { marginBottom: 30 }]}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+
+              <TextInput
+                label={'Password'}
+                mode={'outlined'}
+                style={[styles.input, { marginBottom: 30 }]}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+              />  
+
+               <TextInput
+                label={'Confirm Password'}
+                mode={'outlined'}
+                style={[styles.input, { marginBottom: 30 }]}
+                value={password}
+                onChangeText={(text) => setcpass(text)}
+              />    
+             
+              <Button
+                icon=""
+                mode="contained"
+                onPress={handleSignup}
+                style={styles.button}
+              >
+                Log in
+              </Button>
+            </View>
+          </View>
+        </ScrollView>
+      </PaperProvider>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
+    padding: 10,
+    justifyContent: 'center',
+  },
+  centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
   },
-  title: {
+  loginText: {
     fontSize: 24,
+    marginBottom: 35,
+    textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: 20,
   },
-  form: {
+  inputContainer: {
     width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 15,
+    marginBottom: 16,
   },
   button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
+    width: '50%',
+    marginTop: 10,
+    alignSelf: 'center',
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
+    position: 'absolute',
+    zIndex: -1, 
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+    textAlign: 'center',
   },
 });
 
