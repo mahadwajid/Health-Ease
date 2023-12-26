@@ -28,8 +28,8 @@ const Home = ({ navigation }) => {
     navigation.navigate('SidetabScreen');
   };
 
-  const Localimage=require("../Images/Health1.png");
-  const Localimage1=require("../Images/Pree.png");
+  const Localimage=require("../Images/Health.png");
+
 
   return (
     
@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
      {/* /////UperCard////////////////   */}
      <View style={styles.card}>
       <ImageBackground
-        // source={Localimage}
+        source={Localimage}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
