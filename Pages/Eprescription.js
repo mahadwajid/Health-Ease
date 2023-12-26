@@ -1,8 +1,8 @@
-import React, { useState, useEffect , useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { collection, getDocs , where, query  } from 'firebase/firestore';
-import db from '../firebaseconfig'; 
-import { AuthContext } from '../AuthContext'; 
+import React, { useState, useEffect, useContext } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { collection, getDocs, where, query } from 'firebase/firestore';
+import db from '../firebaseconfig';
+import { AuthContext } from '../AuthContext';
 
 const Eprescription = () => {
   const [prescriptionData, setPrescriptionData] = useState(null);
@@ -13,7 +13,7 @@ const Eprescription = () => {
       try {
         if (user) {
           const prescriptionRef = collection(db, 'Eprescription');
-          const q = query(prescriptionRef, where('patientName', '==', user.firstName)); 
+          const q = query(prescriptionRef, where('patientName', '==', user.firstName));
           const snapshot = await getDocs(q);
           const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           setPrescriptionData(data);
@@ -26,17 +26,19 @@ const Eprescription = () => {
     fetchPrescriptionData();
   }, [user]);
 
-
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.heading}>E-Prescription</Text>
       {prescriptionData ? (
         prescriptionData.map(prescription => (
-          <View key={prescription.id}>
-            <Text style={styles.text}>Patient Name: {prescription.patientName}</Text>
+          <View key={prescription.id} style={styles.prescriptionContainer}>
+            <Text style={styles.sectionHeading}>Patient Details</Text>
+            <Text style={styles.text}>Name: {prescription.patientName}</Text>
             <Text style={styles.text}>Sex: {prescription.patientSex}</Text>
             <Text style={styles.text}>Address: {prescription.patientAddress}</Text>
-            <Text style={styles.text}>Prescription: {prescription.prescription}</Text>
+
+            <Text style={styles.sectionHeading}>Prescription</Text>
+            <Text style={styles.text}>Details: {prescription.prescription}</Text>
             <Text style={styles.text}>Date/Time: {prescription.dateTime}</Text>
             {/* Other fields */}
           </View>
@@ -44,24 +46,35 @@ const Eprescription = () => {
       ) : (
         <Text>Loading prescription...</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   heading: {
-    fontSize: 24,
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  prescriptionContainer: {
+    borderWidth: 2,
+    borderColor: '#000',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 20,
+  },
+  sectionHeading: {
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     marginBottom: 5,
   },
 });

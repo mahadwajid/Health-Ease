@@ -8,7 +8,7 @@ const Support = () => {
 
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>1. Support Groups</Text>
-        <Text>
+        <Text style={styles.sectionContent}>
           Join local or online support groups where individuals with diabetes
           share experiences, tips, and encouragement. Connecting with others
           facing similar challenges can be empowering.
@@ -17,7 +17,7 @@ const Support = () => {
 
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>2. Educational Resources</Text>
-        <Text>
+        <Text style={styles.sectionContent}>
           Access reliable sources for diabetes education. Learn about
           self-management, treatment options, and the latest advancements in
           diabetes care. Knowledge is a powerful tool in managing diabetes.
@@ -26,7 +26,7 @@ const Support = () => {
 
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>3. Counseling Services</Text>
-        <Text>
+        <Text style={styles.sectionContent}>
           Consider seeking professional counseling to address the emotional
           aspects of living with diabetes. Mental health is an essential part
           of overall well-being.
@@ -35,7 +35,7 @@ const Support = () => {
 
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>4. Lifestyle Coaching</Text>
-        <Text>
+        <Text style={styles.sectionContent}>
           Work with a lifestyle coach to develop personalized strategies for
           maintaining a healthy lifestyle. This includes guidance on nutrition,
           exercise, and stress management.
@@ -44,7 +44,7 @@ const Support = () => {
 
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>5. Online Forums</Text>
-        <Text>
+        <Text style={styles.sectionContent}>
           Explore reputable online forums where individuals share insights,
           ask questions, and receive support. However, always verify the
           reliability of information.
@@ -67,12 +67,18 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   section: {
-    marginBottom: 16,
+    marginBottom: 24,
+    backgroundColor: '#F0F0F0',
+    padding: 16,
+    borderRadius: 8,
   },
   sectionHeader: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+  },
+  sectionContent: {
+    fontSize: 16,
   },
 });
 

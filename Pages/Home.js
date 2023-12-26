@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, ImageBackground,TouchableOpacity, StyleSheet, Button, Dimensions } from 'react-native';
+import { View, ImageBackground,TouchableOpacity, StyleSheet,  Dimensions } from 'react-native';
+import { Provider as PaperProvider, Button } from 'react-native-paper';
 const Home = ({ navigation }) => {
 
   const screenHeight = Dimensions.get('window').height;
@@ -24,11 +25,17 @@ const Home = ({ navigation }) => {
     navigation.navigate('Subscription');
   };
 
-  const openSidetab = () => {
-    navigation.navigate('SidetabScreen');
+  const handlePress5 = () => {
+    navigation.navigate('Booking');
   };
 
-  const Localimage=require("../Images/Health.png");
+  const Localimage=require("../Images/Banner2.png");
+  const Localimage1=require("../Images/E-pree.png");
+  const Localimage2=require("../Images/Book(3).png");
+  const Localimage3=require("../Images/Book(4).png");
+  const Localimage4=require("../Images/Support.png");
+  const Localimage5=require("../Images/Banner1.png");
+
 
 
   return (
@@ -36,18 +43,14 @@ const Home = ({ navigation }) => {
     <View style={[styles.con, { height: screenHeight }]} >
      {/* /////UperCard////////////////   */}
      <View style={styles.card}>
+     <TouchableOpacity onPress={handlePress5}>
       <ImageBackground
         source={Localimage}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>Get The Best Medical Service</Text>
-        </View>
-        <TouchableOpacity style={styles.button}>
-        <Button title="Book Now" onPress={() => navigation.navigate('Booking')} />
-        </TouchableOpacity>
       </ImageBackground>
+      </TouchableOpacity>
     </View>
     {/* //////////////////////// */}
 
@@ -55,31 +58,19 @@ const Home = ({ navigation }) => {
     <View style={styles.container}> 
     <TouchableOpacity style={styles.card1} onPress={handlePress}>
       <ImageBackground
-        // source={{
-        //   uri:
-        //     'https://t3.ftcdn.net/jpg/02/14/06/58/240_F_214065892_X0Wy5KxKVI7XmYdmr5QaGuYuXt7MLr4j.jpg',
-        // }}
+        source={Localimage1}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>E-Prescription</Text>
-        </View>
       </ImageBackground>
     </TouchableOpacity>
 
     <TouchableOpacity style={styles.card1} onPress={handlePress1}>
       <ImageBackground
-        // source={{
-        //   uri:
-        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        // }}
+         source={Localimage2}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>Medical Record</Text>
-        </View>
       </ImageBackground>
     </TouchableOpacity>
 
@@ -91,32 +82,20 @@ const Home = ({ navigation }) => {
 
     <TouchableOpacity style={styles.card3} onPress={handlePress3}>
       <ImageBackground
-        // source={{
-        //   uri:
-        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        // }}
-        style={styles.cardImage}
+         source={Localimage4}
+        style={styles.cardImage1}
         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>24/7 Support</Text>
-        
-        </View>
+  
       </ImageBackground>
     </TouchableOpacity>
 
     <TouchableOpacity style={styles.card3} onPress={handlePress2}>
       <ImageBackground
-        // source={{
-        //   uri:
-        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        // }}
-        style={styles.cardImage}
-        imageStyle={styles.imageStyle}
+         source={Localimage3}
+         style={styles.cardImage}
+         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>Health Tracker</Text>
-        </View>
 
       </ImageBackground>
     </TouchableOpacity>
@@ -127,19 +106,14 @@ const Home = ({ navigation }) => {
 
 <TouchableOpacity style={styles.card} onPress={handlePress4}>
       <ImageBackground
-        // source={{
-        //   uri:
-        //     'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701129600&semt=ais',
-        // }}
+        source={Localimage5}
         style={styles.cardImage}
         imageStyle={styles.imageStyle}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>Subscriptions Plans</Text>
-        </View>
       </ImageBackground>
     </TouchableOpacity>
 
+    
     
 
 
@@ -185,7 +159,7 @@ contentContainer: {
   },
  card1: {
     width: '45%',
-    backgroundColor:'#E9E4ED',
+    backgroundColor:'white',
     padding: 0,
     margin: 10,
     borderRadius: 8,
@@ -216,7 +190,21 @@ contentContainer: {
     width: '100%',
     height: 130,
     borderRadius: 8,
-    overflow: 'hidden', // Ensure text doesn't overflow the image boundary
+    overflow: 'hidden',
+  },
+  cardImage1: {
+    marginLeft: -10,
+    width: '105%',
+    height: 130,
+    borderRadius: 8,
+    overflow: 'hidden', 
+  },
+  cardImage2: {
+    marginLeft: -7,
+    width: '105%',
+    height: 130,
+    borderRadius: 8,
+    overflow: 'hidden', 
   },
   imageStyle: {
     resizeMode: 'cover',
@@ -225,7 +213,7 @@ contentContainer: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Overlay background color
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
     padding: 10,
   },
   cardTitle: {
@@ -236,8 +224,8 @@ contentContainer: {
   },
   button: {
     position: 'absolute',
-    bottom: 20,
-    left: 5,
+    bottom: 10,
+    left: 120,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

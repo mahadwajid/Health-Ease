@@ -3,9 +3,9 @@ import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 
 const cardData = [
-  { name: 'Step1' },
-  { name: 'Step2' },
-  { name: 'Step3' },
+  { name: 'Step1', image: require("../Images/Book(6).png") },
+  { name: 'Step2', image: require("../Images/Book(8).png")  },
+  { name: 'Step3',image: require("../Images/bloodpressure.jpg")  },
 ];
 
 const Healthtracker = () => {
@@ -19,9 +19,7 @@ const Healthtracker = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {cardData.map((card, index) => (
         <TouchableOpacity key={index} style={styles.card} onPress={() => navigateToBMI(card.name)}>
-          {/* Assuming you want the same image for all cards */}
           <Image source={card.image}  style={styles.cardImage} />
-          <Text style={styles.cardText}>{card.name}</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -53,8 +51,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   cardImage: {
-    width: '100%',
-    height: '70%',
+    width: 300,
+    height: 200,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     resizeMode: 'cover',

@@ -1,19 +1,42 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { collection, addDoc } from 'firebase/firestore';
+import db from '../../firebaseconfig'; // Import your Firebase config
 
 const Step3 = () => {
+  const[name, setname]= useState('');
   const [bloodPressure, setBloodPressure] = useState('');
   const [bloodSugar, setBloodSugar] = useState('');
 
-  const saveHealthData = () => {
-    // Implement logic to save health data (blood pressure and sugar) to your backend or storage
-    // For now, we'll just log the entered data
-    console.log(`Blood Pressure: ${bloodPressure}, Blood Sugar: ${bloodSugar}`);
+  const saveHealthData = async () => {
+    try {
+      const healthDataCollectionRef = collection(db, 'HealthData'); 
+      await addDoc(healthDataCollectionRef, {
+        name:name,
+        bloodPressure: bloodPressure,
+        bloodSugar: bloodSugar,
+        timestamp: new Date().toISOString(),
+      });
+      console.log('Health data saved to Firebase!');
+    } catch (error) {
+      console.error('Error saving health data to Firebase: ', error);
+    }
   };
+
+
+  
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Enter Previous Health Data</Text>
+       
+      <TextInput
+        style={styles.input}
+        placeholder="Enter Patient"
+        keyboardType="text"
+        value={name}
+        onChangeText={(text) => setname(text)}
+      />
 
       <TextInput
         style={styles.input}

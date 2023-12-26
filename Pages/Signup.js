@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, ScrollView, } from 'react-native';
+import { View, StyleSheet, ImageBackground, ScrollView,Alert } from 'react-native';
 import { Provider as PaperProvider, Button, TextInput, Text } from 'react-native-paper';
 import { collection , addDoc } from 'firebase/firestore';
 import  db  from '../firebaseconfig.js'; 
